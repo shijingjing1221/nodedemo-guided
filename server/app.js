@@ -11,7 +11,7 @@ var app = express();
 
 var env = process.env.NODE_ENV || 'development';
 if ('production' === env) {
-    publicDir = '/public';
+    publicDir = 'public';
     ip = process.env.OPENSHIFT_NODEDIY_IP || ip;
     port = process.env.OPENSHIFT_NODEDIY_PORT || port;
 } else {
