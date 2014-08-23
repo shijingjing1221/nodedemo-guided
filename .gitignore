@@ -4,3 +4,4 @@ public
 .sass-cache
 .idea
 dist
+npm-debug.log
