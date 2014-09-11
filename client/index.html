@@ -2,15 +2,20 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js bootstrap3 next chrometwo"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <base href="/">
+    <base href="/labs/rhLabsAngularApp/">
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link href="/chrome_themes/umbra/s/chrometwo.css" rel="stylesheet" />
+    <link href="/webassets/avalon/s/bootstrap3.min.css" rel="stylesheet" />
+    <link href="/webassets/avalon/s/bootstrap3.overrides.css" rel="stylesheet" />
+    <link href="/chrome_themes/umbra/s/labs.css" rel="stylesheet" />
+    <script type="text/javascript" src="/webassets/avalon/j/lib/require.js"></script>
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
       <!-- endbower -->
@@ -21,51 +26,64 @@
       <!-- endinjector -->
     <!-- endbuild -->
   </head>
-  <body ng-app="rhLabsAngularApp">
+  <body>
+
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
-    <!-- Add your site or application content here -->
-    <div ui-view=""></div>
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
+    <div id="chrometwo">
+      <div id="main">
+        <div id="rhLabsAngularApp">
+          <div ui-view=""></div>
+        </div>
+      </div>
+    </div>
 
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
-    <!-- build:js(client) app/vendor.js -->
-      <!-- bower:js -->
-      <script src="bower_components/jquery/dist/jquery.js"></script>
-      <script src="bower_components/angular/angular.js"></script>
-      <script src="bower_components/angular-resource/angular-resource.js"></script>
-      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-      <script src="bower_components/lodash/dist/lodash.compat.js"></script>
-      <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-      <!-- endbower -->
-    <!-- endbuild -->
 
-        <!-- build:js({.tmp,client}) app/app.js -->
-        <script src="app/app.js"></script>
-          <!-- injector:js -->
-          <script src="app/about/about.controller.js"></script>
-          <script src="app/about/about.js"></script>
-          <script src="app/main/main.controller.js"></script>
-          <script src="app/main/main.js"></script>
-          <script src="components/navbar/navbar.controller.js"></script>
-          <!-- endinjector -->
-        <!-- endbuild -->
+    <script type="text/javascript">
+      window.breadcrumbs = [
+        ['Labs', '/labs/'],
+        ['RH Labs Angular App','/labs/rhLabsAngularApp/']
+      ];
+
+    </script>
+
+    <script type="text/javascript">
+      /*global document, window, angular*/
+      (function () {
+        'use strict';
+        window.chrometwo_require(
+          ['jquery'],
+          function (jq) {
+            <!-- build:js(client) app/vendor.js -->
+              <!-- bower:js -->
+              jq("head").prepend("<script src='bower_components/jquery/dist/jquery.js' />");
+              jq("head").prepend("<script src='bower_components/angular/angular.js' />");
+              jq("head").prepend("<script src='bower_components/angular-resource/angular-resource.js' />");
+              jq("head").prepend("<script src='bower_components/angular-cookies/angular-cookies.js' />");
+              jq("head").prepend("<script src='bower_components/angular-sanitize/angular-sanitize.js' />");
+              jq("head").prepend("<script src='bower_components/angular-bootstrap/ui-bootstrap-tpls.js' />");
+              jq("head").prepend("<script src='bower_components/lodash/dist/lodash.compat.js' />");
+              jq("head").prepend("<script src='bower_components/angular-ui-router/release/angular-ui-router.js' />");
+              <!-- endbower -->
+            <!-- endbuild -->
+            <!-- build:js({.tmp,client}) app/app.js -->
+              jq("head").prepend("<script src='app/app.js' />")
+              <!-- injector:js -->
+              jq("head").prepend("<script src='app/about/about.controller.js' />")
+              jq("head").prepend("<script src='app/about/about.js' />")
+              jq("head").prepend("<script src='app/main/main.controller.js' />")
+              jq("head").prepend("<script src='app/main/main.js' />")
+              jq("head").prepend("<script src='components/navbar/navbar.controller.js' />")
+              <!-- endinjector -->
+            <!-- endbuild -->
+            window.angular.bootstrap(document.getElementById('rhLabsAngularApp'), ['rhLabsAngularApp']);
+        });
+      })();
+    </script>
 </body>
 </html>

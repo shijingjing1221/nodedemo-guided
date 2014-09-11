@@ -214,7 +214,15 @@ module.exports = function (grunt) {
       target: {
         src: '<%= yeoman.client %>/index.html',
         ignorePath: '<%= yeoman.client %>/',
-        exclude: [/bootstrap-sass-official/, /bootstrap.js/, '/json3/', '/es5-shim/', /bootstrap.css/, /font-awesome.css/ ]
+        exclude: [/bootstrap-sass-official/, /bootstrap.js/, '/json3/', '/es5-shim/', /bootstrap.css/, /font-awesome.css/ ],
+        fileTypes: {
+          html: {
+            replace: {
+              js: 'jq("head").prepend("<script src=\'{{filePath}}\' />");',
+              css: '<link rel="stylesheet" href="{{filePath}}" />'
+            }
+          }
+        }
       }
     },
 
@@ -257,7 +265,12 @@ module.exports = function (grunt) {
           js: [
             [/(assets\/images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved images']
           ]
-        }
+        },
+        blockReplacements: {
+          js: function (block) {
+            return 'jq("head").prepend("<script src=\'' + block.dest + '\' />");';
+          }
+    }
       }
     },
 
@@ -443,7 +456,7 @@ module.exports = function (grunt) {
           transform: function(filePath) {
             filePath = filePath.replace('/client/', '');
             filePath = filePath.replace('/.tmp/', '');
-            return '<script src="' + filePath + '"></script>';
+            return 'jq("head").prepend("<script src=\'' + filePath + '\' />")';
           },
           starttag: '<!-- injector:js -->',
           endtag: '<!-- endinjector -->'

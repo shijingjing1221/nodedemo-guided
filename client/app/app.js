@@ -10,6 +10,4 @@ angular.module('rhLabsAngularApp', [
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider
       .otherwise('/');
-
-    $locationProvider.html5Mode(true);
   });
