@@ -50,7 +50,7 @@ module.exports = function (grunt) {
     },
     open: {
       server: {
-        url: 'https://llabsci.redhat.com:1337/labs/' + appName
+        url: 'https://foo.redhat.com:1337/labs/' + appName
       }
     },
     watch: {
