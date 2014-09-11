@@ -2,6 +2,7 @@
 'use strict';
 
 module.exports = function (grunt) {
+  var appName = 'rhLabsAngularApp';
   var localConfig;
   try {
     localConfig = require('./server/config/local.env');
@@ -49,7 +50,7 @@ module.exports = function (grunt) {
     },
     open: {
       server: {
-        url: 'http://localhost:<%= express.options.port %>'
+        url: 'https://llabsci.redhat.com:1337/labs/' + appName
       }
     },
     watch: {
@@ -291,7 +292,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       options: {
         // This should be the name of your apps angular module
-        module: 'rhLabsAngularApp',
+        module: appName,
         htmlmin: {
           collapseBooleanAttributes: true,
           collapseWhitespace: true,
