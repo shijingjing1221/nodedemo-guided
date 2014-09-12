@@ -2,7 +2,7 @@
 set -o errexit #abort if any command fails
 
 deploy_directory=dist
-deploy_branch=built
+deploy_branch=build
 
 #if no user identity is already set in the current git environment, use this:
 default_username=deploy.sh
@@ -59,7 +59,7 @@ enable_expanded_output
 #make deploy_branch the current branch
 git symbolic-ref HEAD refs/heads/$deploy_branch
 
-#put the previously committed contents of deploy_branch branch into the index 
+#put the previously committed contents of deploy_branch branch into the index
 git --work-tree "$deploy_directory" reset --mixed --quiet
 
 git --work-tree "$deploy_directory" add --all
@@ -73,7 +73,7 @@ case $diff in
 		set_user_id
 		git --work-tree "$deploy_directory" commit -m \
 			"publish: $commit_title"$'\n\n'"generated from commit $commit_hash"
-		
+
 		disable_expanded_output
 		#--quiet is important here to avoid outputting the repo URL, which may contain a secret token
 		git push --quiet $repo $deploy_branch
