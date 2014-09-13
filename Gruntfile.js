@@ -1,12 +1,11 @@
 // Generated on 2014-08-22 using generator-angular-fullstack 2.0.10
 'use strict';
 
-module.exports = function (grunt) {
-  var appName = 'rhLabsAngularApp';
+module.exports = function(grunt) {
   var localConfig;
   try {
     localConfig = require('./server/config/local.env');
-  } catch(e) {
+  } catch (e) {
     localConfig = {};
   }
 
@@ -16,7 +15,8 @@ module.exports = function (grunt) {
     useminPrepare: 'grunt-usemin',
     ngtemplates: 'grunt-angular-templates',
     protractor: 'grunt-protractor-runner',
-    injector: 'grunt-asset-injector'
+    injector: 'grunt-asset-injector',
+    preprocess: 'grunt-preprocess'
   });
 
   // Time how long tasks take. Can help when optimizing build times
@@ -50,7 +50,7 @@ module.exports = function (grunt) {
     },
     open: {
       server: {
-        url: 'https://foo.redhat.com:1337/labs/' + appName + '/'
+        url: 'https://foo.redhat.com:1337/labs/<%= pkg.name %>/'
       }
     },
     watch: {
@@ -59,7 +59,8 @@ module.exports = function (grunt) {
           '<%= yeoman.client %>/{app,components}/**/*.js',
           '!<%= yeoman.client %>/{app,components}/**/*.spec.js',
           '!<%= yeoman.client %>/{app,components}/**/*.mock.js',
-          '!<%= yeoman.client %>/app/app.js'],
+          '!<%= yeoman.client %>/app/app.js'
+        ],
         tasks: ['injector:scripts']
       },
       injectCss: {
@@ -77,18 +78,21 @@ module.exports = function (grunt) {
       },
       injectSass: {
         files: [
-          '<%= yeoman.client %>/{app,components}/**/*.{scss,sass}'],
+          '<%= yeoman.client %>/{app,components}/**/*.{scss,sass}'
+        ],
         tasks: ['injector:sass']
       },
       sass: {
         files: [
-          '<%= yeoman.client %>/{app,components}/**/*.{scss,sass}'],
+          '<%= yeoman.client %>/{app,components}/**/*.{scss,sass}'
+        ],
         tasks: ['sass', 'autoprefixer']
       },
       jade: {
         files: [
           '<%= yeoman.client %>/{app,components}/*',
-          '<%= yeoman.client %>/{app,components}/**/*.jade'],
+          '<%= yeoman.client %>/{app,components}/**/*.jade'
+        ],
         tasks: ['jade']
       },
       gruntfile: {
@@ -129,7 +133,7 @@ module.exports = function (grunt) {
         options: {
           jshintrc: 'server/.jshintrc'
         },
-        src: [ 'server/{,*/}*.js']
+        src: ['server/{,*/}*.js']
       },
       all: [
         '<%= yeoman.client %>/{app,components}/**/*.js',
@@ -194,14 +198,14 @@ module.exports = function (grunt) {
           env: {
             PORT: process.env.PORT || 9000
           },
-          callback: function (nodemon) {
-            nodemon.on('log', function (event) {
+          callback: function(nodemon) {
+            nodemon.on('log', function(event) {
               console.log(event.colour);
             });
 
             // opens browser on initial server start
-            nodemon.on('config:update', function () {
-              setTimeout(function () {
+            nodemon.on('config:update', function() {
+              setTimeout(function() {
                 require('open')('http://localhost:8080/debug?port=5858');
               }, 500);
             });
@@ -215,7 +219,7 @@ module.exports = function (grunt) {
       target: {
         src: '<%= yeoman.client %>/index.html',
         ignorePath: '<%= yeoman.client %>/',
-        exclude: [/bootstrap-sass-official/, /bootstrap.js/, '/json3/', '/es5-shim/', /bootstrap.css/, /font-awesome.css/ ],
+        exclude: [/bootstrap-sass-official/, /bootstrap.js/, '/angular/', '/json3/', '/jquery/', '/es5-shim/', /bootstrap.css/, /font-awesome.css/],
         fileTypes: {
           html: {
             replace: {
@@ -226,18 +230,17 @@ module.exports = function (grunt) {
         }
       }
     },
-
-    // Renames files for browser caching purposes
-    rev: {
-      dist: {
-        files: {
-          src: [
-            '<%= yeoman.dist %>/public/{,*/}*.js',
-            '<%= yeoman.dist %>/public/{,*/}*.css',
-            '<%= yeoman.dist %>/public/assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-            '<%= yeoman.dist %>/public/assets/fonts/*'
-          ]
+    preprocess: {
+      options: {
+        inline: true,
+        context: {
+          DEBUG: false
         }
+      },
+      html: {
+        src: [
+          '<%= yeoman.dist %>/public/index.html'
+        ]
       }
     },
 
@@ -266,12 +269,7 @@ module.exports = function (grunt) {
           js: [
             [/(assets\/images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved images']
           ]
-        },
-        blockReplacements: {
-          js: function (block) {
-            return 'jq("head").prepend("<script src=\'' + block.dest + '\' />");';
-          }
-    }
+        }
       }
     },
 
@@ -292,7 +290,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       options: {
         // This should be the name of your apps angular module
-        module: appName,
+        module: '<%= pkg.name %>',
         htmlmin: {
           collapseBooleanAttributes: true,
           collapseWhitespace: true,
@@ -330,6 +328,7 @@ module.exports = function (grunt) {
             'bower_components/**/*',
             'assets/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
             'assets/fonts/**/*',
+            'loader.js',
             'index.html'
           ]
         }, {
@@ -414,6 +413,7 @@ module.exports = function (grunt) {
     jade: {
       compile: {
         options: {
+          pretty: true,
           data: {
             debug: false
           }
@@ -442,7 +442,7 @@ module.exports = function (grunt) {
           compass: false
         },
         files: {
-          '.tmp/app/app.css' : '<%= yeoman.client %>/app/app.scss'
+          '.tmp/app/app.css': '<%= yeoman.client %>/app/app.scss'
         }
       }
     },
@@ -464,11 +464,12 @@ module.exports = function (grunt) {
         },
         files: {
           '<%= yeoman.client %>/index.html': [
-              ['{.tmp,<%= yeoman.client %>}/{app,components}/**/*.js',
-               '!{.tmp,<%= yeoman.client %>}/app/app.js',
-               '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.spec.js',
-               '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js']
+            ['{.tmp,<%= yeoman.client %>}/{app,components}/**/*.js',
+              '!{.tmp,<%= yeoman.client %>}/app/app.js',
+              '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.spec.js',
+              '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js'
             ]
+          ]
         }
       },
 
@@ -512,12 +513,12 @@ module.exports = function (grunt) {
   });
 
   // Used for delaying livereload until after server has restarted
-  grunt.registerTask('wait', function () {
+  grunt.registerTask('wait', function() {
     grunt.log.ok('Waiting for server reload...');
 
     var done = this.async();
 
-    setTimeout(function () {
+    setTimeout(function() {
       grunt.log.writeln('Done waiting!');
       done();
     }, 1500);
@@ -527,7 +528,7 @@ module.exports = function (grunt) {
     this.async();
   });
 
-  grunt.registerTask('serve', function (target) {
+  grunt.registerTask('serve', function(target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'env:all', 'env:prod', 'express:prod', 'wait', 'open', 'express-keepalive']);
     }
@@ -560,7 +561,7 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('server', function () {
+  grunt.registerTask('server', function() {
     grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
     grunt.task.run(['serve']);
   });
@@ -571,9 +572,7 @@ module.exports = function (grunt) {
         'env:all',
         'env:test'
       ]);
-    }
-
-    else if (target === 'client') {
+    } else if (target === 'client') {
       return grunt.task.run([
         'clean:server',
         'env:all',
@@ -583,9 +582,7 @@ module.exports = function (grunt) {
         'autoprefixer',
         'karma'
       ]);
-    }
-
-    else if (target === 'e2e') {
+    } else if (target === 'e2e') {
       return grunt.task.run([
         'clean:server',
         'env:all',
@@ -598,9 +595,7 @@ module.exports = function (grunt) {
         'express:dev',
         'protractor'
       ]);
-    }
-
-    else grunt.task.run([
+    } else grunt.task.run([
       'test:server',
       'test:client'
     ]);
@@ -620,7 +615,7 @@ module.exports = function (grunt) {
     'copy:dist',
     'cssmin',
     'uglify',
-    'rev',
+    'preprocess:html',
     'usemin'
   ]);
 

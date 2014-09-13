@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('rhLabsAngularApp')
+angular.module('rhlabsangular')
   .controller('AboutCtrl', function ($scope) {
     $scope.title = 'About';
   });

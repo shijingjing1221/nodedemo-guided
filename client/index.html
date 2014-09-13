@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <base href="/labs/rhLabsAngularApp/">
+    <base href="/labs/rhlabsangular/">
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
@@ -16,6 +16,12 @@
     <link href="/webassets/avalon/s/bootstrap3.overrides.css" rel="stylesheet" />
     <link href="/chrome_themes/umbra/s/labs.css" rel="stylesheet" />
     <script type="text/javascript" src="/webassets/avalon/j/lib/require.js"></script>
+    <!-- @if DEBUG -->
+    <script>
+      window.LABS_DEBUG = true;
+    </script>
+    <!-- @endif -->
+    <script type="text/javascript" src="loader.js"></script>
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
       <!-- endbower -->
@@ -33,7 +39,7 @@
     <![endif]-->
     <div id="chrometwo">
       <div id="main">
-        <div id="rhLabsAngularApp">
+        <div id="rhlabsangular" style="display: none;">
           <div ui-view=""></div>
         </div>
       </div>
@@ -47,22 +53,19 @@
     <script type="text/javascript">
       window.breadcrumbs = [
         ['Labs', '/labs/'],
-        ['RH Labs Angular App','/labs/rhLabsAngularApp/']
+        ["RH Labs Angular","/labs/rhlabsangular/"]
       ];
-
     </script>
-
+    <!-- @if DEBUG -->
     <script type="text/javascript">
       /*global document, window, angular*/
       (function () {
         'use strict';
         window.chrometwo_require(
-          ['jquery'],
-          function (jq) {
+          ['jquery', 'angular128'],
+          function (jq, angular) {
             <!-- build:js(client) app/vendor.js -->
               <!-- bower:js -->
-              jq("head").prepend("<script src='bower_components/jquery/dist/jquery.js' />");
-              jq("head").prepend("<script src='bower_components/angular/angular.js' />");
               jq("head").prepend("<script src='bower_components/angular-resource/angular-resource.js' />");
               jq("head").prepend("<script src='bower_components/angular-cookies/angular-cookies.js' />");
               jq("head").prepend("<script src='bower_components/angular-sanitize/angular-sanitize.js' />");
@@ -81,9 +84,11 @@
               jq("head").prepend("<script src='components/navbar/navbar.controller.js' />")
               <!-- endinjector -->
             <!-- endbuild -->
-            window.angular.bootstrap(document.getElementById('rhLabsAngularApp'), ['rhLabsAngularApp']);
+            window.angular.bootstrap(document, ['rhlabsangular']);
+            jq('#rhlabsangular').fadeIn();
         });
       })();
     </script>
+    <!-- @endif -->
 </body>
 </html>
