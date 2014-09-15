@@ -2,7 +2,7 @@
 set -o errexit #abort if any command fails
 
 deploy_directory=dist
-deploy_branch=build
+deploy_branch=built
 
 #if no user identity is already set in the current git environment, use this:
 default_username=deploy.sh
@@ -11,9 +11,18 @@ default_email=
 #repository to deploy to. must be readable and writable.
 repo=origin
 
+# Parse arg flags
+while : ; do
 if [[ $1 = "-v" || $1 = "--verbose" ]]; then
-	verbose=true
+    verbose=true
+    shift
+elif [[ $1 = "-s" || $1 = "--setup" ]]; then
+    setup=true
+    shift
+else
+    break
 fi
+done
 
 #echo expanded commands as they are executed (for debugging)
 function enable_expanded_output {
@@ -31,7 +40,21 @@ function disable_expanded_output {
 	fi
 }
 
+function setup_repo {
+	git --work-tree $deploy_directory checkout --orphan $deploy_branch
+	git --work-tree $deploy_directory rm -r "*"
+	git --work-tree $deploy_directory add --all
+	git --work-tree $deploy_directory commit -m "initial publish"
+	git push origin $deploy_branch
+	git symbolic-ref HEAD refs/heads/master && git reset --mixed
+}
+
 enable_expanded_output
+
+if [ $setup ]; then
+	setup_repo
+	exit
+fi
 
 commit_title=`git log -n 1 --format="%s" HEAD`
 commit_hash=`git log -n 1 --format="%H" HEAD`
