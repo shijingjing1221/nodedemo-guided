@@ -42,7 +42,7 @@ function disable_expanded_output {
 
 function setup_repo {
 	git --work-tree $deploy_directory checkout --orphan $deploy_branch
-	git --work-tree $deploy_directory rm -r "*"
+	git --work-tree $deploy_directory rm -r "*" -f
 	git --work-tree $deploy_directory add --all
 	git --work-tree $deploy_directory commit -m "initial publish"
 	git push origin $deploy_branch
