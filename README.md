@@ -30,7 +30,7 @@ git push origin -f
 
 1. Setup [accesslabsproxy](https://github.com/connyay/accesslabsproxy).
 2. In a terminal start the proxy with `accesslabsproxy`
-3. In another window navigate to your apps directory and run the following commands
+3. In another terminal navigate to your apps directory and run the following commands
   - `npm install`
   - `bower install`
   - `grunt serve`
