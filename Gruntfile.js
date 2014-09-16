@@ -223,8 +223,8 @@ module.exports = function(grunt) {
         fileTypes: {
           html: {
             replace: {
-              js: function(filePath){
-                return '/*<script src="'+filePath+'"/>*/\n        window.deps.push("'+filePath.replace('.js', '')+'");';
+              js: function(filePath) {
+                return '/*<script src="' + filePath + '"/>*/\n        window.deps.push("' + filePath.replace('.js', '') + '");';
               },
               css: '<link rel="stylesheet" href="{{filePath}}" />'
             }
@@ -347,6 +347,18 @@ module.exports = function(grunt) {
           ]
         }]
       },
+      openshift: {
+        options: {
+          mode: true
+        },
+        files: [{
+          expand: true,
+          dest: '<%= yeoman.dist %>',
+          src: [
+            '.openshift/**/*'
+          ]
+        }]
+      },
       styles: {
         expand: true,
         cwd: '<%= yeoman.client %>',
@@ -458,7 +470,7 @@ module.exports = function(grunt) {
         options: {
           transform: function(filePath) {
             filePath = filePath.replace('/client/', '').replace('/.tmp/', '');
-            return '/*<script src="'+filePath+'"/>*/\n        window.deps.push("' + filePath.replace('.js', '') + '");';
+            return '/*<script src="' + filePath + '"/>*/\n        window.deps.push("' + filePath.replace('.js', '') + '");';
           },
           starttag: '<!-- injector:js -->',
           endtag: '<!-- endinjector -->'
@@ -614,6 +626,7 @@ module.exports = function(grunt) {
     'concat',
     'ngAnnotate',
     'copy:dist',
+    'copy:openshift',
     'cssmin',
     'uglify',
     'preprocess:html',
