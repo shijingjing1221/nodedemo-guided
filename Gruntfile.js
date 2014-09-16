@@ -223,7 +223,7 @@ module.exports = function(grunt) {
         fileTypes: {
           html: {
             replace: {
-              js: 'jq("head").prepend("<script src=\'{{filePath}}\' />");',
+              js: 'window.deps.push("{{filePath}}");',
               css: '<link rel="stylesheet" href="{{filePath}}" />'
             }
           }
@@ -455,9 +455,8 @@ module.exports = function(grunt) {
       scripts: {
         options: {
           transform: function(filePath) {
-            filePath = filePath.replace('/client/', '');
-            filePath = filePath.replace('/.tmp/', '');
-            return 'jq("head").prepend("<script src=\'' + filePath + '\' />")';
+            filePath = filePath.replace('/client/', '').replace('/.tmp/', '').replace('.js', '');
+            return 'window.deps.push("' + filePath + '");';
           },
           starttag: '<!-- injector:js -->',
           endtag: '<!-- endinjector -->'

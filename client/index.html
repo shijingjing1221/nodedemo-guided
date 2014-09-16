@@ -19,6 +19,28 @@
     <!-- @if DEBUG -->
     <script>
       window.LABS_DEBUG = true;
+      window.deps = [];
+      <!-- build:js(client) app/vendor.js -->
+        <!-- bower:js -->
+        window.deps.push("bower_components/angular-resource/angular-resource.js");
+        window.deps.push("bower_components/angular-cookies/angular-cookies.js");
+        window.deps.push("bower_components/angular-sanitize/angular-sanitize.js");
+        window.deps.push("bower_components/angular-bootstrap/ui-bootstrap-tpls.js");
+        window.deps.push("bower_components/lodash/dist/lodash.compat.js");
+        window.deps.push("bower_components/angular-ui-router/release/angular-ui-router.js");
+        <!-- endbower -->
+      <!-- endbuild -->
+
+      <!-- build:js({.tmp,client}) app/app.js -->
+        window.deps.push('app/app')
+        <!-- injector:js -->
+        window.deps.push("app/about/about.controller");
+        window.deps.push("app/about/about");
+        window.deps.push("app/main/main.controller");
+        window.deps.push("app/main/main");
+        window.deps.push("components/navbar/navbar.controller");
+        <!-- endinjector -->
+      <!-- endbuild -->
     </script>
     <!-- @endif -->
     <script type="text/javascript" src="loader.js"></script>
@@ -56,39 +78,6 @@
         ["RH Labs Angular","/labs/rhlabsangular/"]
       ];
     </script>
-    <!-- @if DEBUG -->
-    <script type="text/javascript">
-      /*global document, window, angular*/
-      (function () {
-        'use strict';
-        window.chrometwo_require(
-          ['jquery', 'angular128'],
-          function (jq, angular) {
-            <!-- build:js(client) app/vendor.js -->
-              <!-- bower:js -->
-              jq("head").prepend("<script src='bower_components/angular-resource/angular-resource.js' />");
-              jq("head").prepend("<script src='bower_components/angular-cookies/angular-cookies.js' />");
-              jq("head").prepend("<script src='bower_components/angular-sanitize/angular-sanitize.js' />");
-              jq("head").prepend("<script src='bower_components/angular-bootstrap/ui-bootstrap-tpls.js' />");
-              jq("head").prepend("<script src='bower_components/lodash/dist/lodash.compat.js' />");
-              jq("head").prepend("<script src='bower_components/angular-ui-router/release/angular-ui-router.js' />");
-              <!-- endbower -->
-            <!-- endbuild -->
-            <!-- build:js({.tmp,client}) app/app.js -->
-              jq("head").prepend("<script src='app/app.js' />")
-              <!-- injector:js -->
-              jq("head").prepend("<script src='app/about/about.controller.js' />")
-              jq("head").prepend("<script src='app/about/about.js' />")
-              jq("head").prepend("<script src='app/main/main.controller.js' />")
-              jq("head").prepend("<script src='app/main/main.js' />")
-              jq("head").prepend("<script src='components/navbar/navbar.controller.js' />")
-              <!-- endinjector -->
-            <!-- endbuild -->
-            window.angular.bootstrap(document, ['rhlabsangular']);
-            jq('#rhlabsangular').fadeIn();
-        });
-      })();
-    </script>
-    <!-- @endif -->
+
 </body>
 </html>
