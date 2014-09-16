@@ -14,8 +14,6 @@ if ('production' === env) {
     publicDir = 'public';
     ip = process.env.OPENSHIFT_NODEDIY_IP || ip;
     port = process.env.OPENSHIFT_NODEDIY_PORT || port;
-} else {
-    app.use('/labs/rhlabsangular/', express.static(path.resolve('.tmp')));
 }
 
 app.use('/labs/rhlabsangular/', express.static(path.resolve(publicDir)));
