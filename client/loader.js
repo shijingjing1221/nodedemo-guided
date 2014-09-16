@@ -6,14 +6,7 @@
     ], function(angular, jq) {
         'use strict';
 
-        if (window.LABS_DEBUG) {
-            var length = window.deps.length;
-            for (var i = 0; i < length; i++) {
-                window.deps[i] = window.deps[i]
-                    .replace('.min', '')
-                    .replace('.js', '');
-            }
-        } else {
+        if (!window.LABS_DEBUG) {
             window.deps = ['app/vendor', 'app/app'];
         }
 
