@@ -223,7 +223,9 @@ module.exports = function(grunt) {
         fileTypes: {
           html: {
             replace: {
-              js: 'window.deps.push("{{filePath}}");',
+              js: function(filePath){
+                return '/*<script src="'+filePath+'"/>*/\n        window.deps.push("'+filePath+'");';
+              },
               css: '<link rel="stylesheet" href="{{filePath}}" />'
             }
           }
@@ -455,8 +457,8 @@ module.exports = function(grunt) {
       scripts: {
         options: {
           transform: function(filePath) {
-            filePath = filePath.replace('/client/', '').replace('/.tmp/', '').replace('.js', '');
-            return 'window.deps.push("' + filePath + '");';
+            filePath = filePath.replace('/client/', '').replace('/.tmp/', '');
+            return '/*<script src="'+filePath+'"/>*/\n        window.deps.push("' + filePath + '");';
           },
           starttag: '<!-- injector:js -->',
           endtag: '<!-- endinjector -->'
