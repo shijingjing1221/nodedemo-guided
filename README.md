@@ -11,19 +11,7 @@ cd <app name>
 ```
 
 ```bash
-git remote add upstream git@github.com:connyay/rh-labs-angular.git
-```
-
-```bash
-git fetch upstream
-```
-
-```bash
-git reset --hard upstream/master
-```
-
-```bash
-git push origin -f
+./init.sh -r connyay/rh-labs-angular -t 1.0.0 -n <app name>
 ```
 
 ## Local Development
