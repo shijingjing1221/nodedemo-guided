@@ -7,7 +7,7 @@
         'use strict';
 
         if (!window.LABS_DEBUG) {
-            window.deps = ['app/vendor', 'app/app'];
+            window.deps = ['app/vendor.js?bust=0.0.0', 'app/app.js?bust=0.0.0'];
         }
 
         window.require.config({

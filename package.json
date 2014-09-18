@@ -1,6 +1,6 @@
 {
   "name": "rhlabsangular",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "server/app.js",
   "dependencies": {
     "express": "~4.0.0",
@@ -21,7 +21,7 @@
     "grunt-env": "~0.4.1",
     "grunt-ng-annotate": "^0.2.3",
     "grunt-preprocess": "^4.0.0",
-    "grunt-rev": "~0.1.0",
+    "grunt-text-replace": "~0.3.12",
     "grunt-usemin": "^2.4.x",
     "grunt-wiredep": "~1.8.0",
     "jade": "~1.2.0",

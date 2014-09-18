@@ -16,7 +16,8 @@ module.exports = function(grunt) {
     ngtemplates: 'grunt-angular-templates',
     protractor: 'grunt-protractor-runner',
     injector: 'grunt-asset-injector',
-    preprocess: 'grunt-preprocess'
+    preprocess: 'grunt-preprocess',
+    replace: 'grunt-text-replace'
   });
 
   // Time how long tasks take. Can help when optimizing build times
@@ -214,12 +215,31 @@ module.exports = function(grunt) {
       }
     },
 
+    replace: {
+      client: {
+        src: ['<%= yeoman.client %>/index.html', '<%= yeoman.client %>/loader.js'],
+        overwrite: true,
+        replacements: [{
+          from: /(bust=)\d{1,3}\.\d{1,3}\.\d{1,3}/g,
+          to: '$1<%= pkg.version %>'
+        }]
+      },
+      dist: {
+        src: ['<%= yeoman.dist %>/public/index.html'],
+        overwrite: true,
+        replacements: [{
+          from: /(<link[^\>]+href=['"][^"']+)(["'])/gm,
+          to: '$1?bust=<%= pkg.version %>$2'
+        }]
+      }
+    },
+
     // Automatically inject Bower components into the app
     wiredep: {
       target: {
         src: '<%= yeoman.client %>/index.html',
         ignorePath: '<%= yeoman.client %>/',
-        exclude: [/bootstrap-sass-official/, /bootstrap.js/, '/angular/', '/json3/', '/jquery/', '/es5-shim/', /bootstrap.css/, /font-awesome.css/],
+        exclude: ['/angular/', '/json3/', '/jquery/', '/es5-shim/', /font-awesome.css/],
         fileTypes: {
           html: {
             replace: {
@@ -625,7 +645,9 @@ module.exports = function(grunt) {
     'ngtemplates',
     'concat',
     'ngAnnotate',
+    'replace:client',
     'copy:dist',
+    'replace:dist',
     'copy:openshift',
     'cssmin',
     'uglify',
