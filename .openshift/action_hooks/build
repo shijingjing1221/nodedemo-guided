@@ -4,32 +4,12 @@
 HOME=$OPENSHIFT_REPO_DIR
 cd $OPENSHIFT_REPO_DIR
 
-# install compass
-if [ `gem list compass -i` == "false" ]; then
-  echo "Installing compass"
-  gem install compass -v 0.12.6 --no-ri --no-rdoc
-fi
-
-# install breakpoint
-if [ `gem list breakpoint -i` == "false" ]; then
-  echo "Installing breakpoint"
-  gem install breakpoint -v 2.0.7 --no-ri --no-rdoc
-fi
-
 mkdir -p "$OPENSHIFT_DATA_DIR"node_modules
 mkdir -p "$OPENSHIFT_DATA_DIR"bower_components
 
 ln -s "$OPENSHIFT_DATA_DIR"node_modules node_modules
-ln -s "$OPENSHIFT_DATA_DIR"bower_components client/
 
 npm install --loglevel error
 
 # Prune some unecessary files from node_modules
 find node_modules/* -type f -iname "*.md" -o -type d -name "test*" -o -type d -name "example*" | xargs rm -rf
-
-bower install -q
-grunt build
-
-ls -1 | grep -E -v 'dist|node_modules' | xargs rm -rf
-mv dist/* .
-rm -rf dist
