@@ -11,7 +11,7 @@ cd <app name>
 ```
 
 ```bash
-./init.sh -r connyay/rh-labs-angular -t 1.0.1 -n <app name>
+./init.sh -r connyay/rh-labs-angular -t 1.0.2 -n <app name>
 ```
 
 ## Local Development
