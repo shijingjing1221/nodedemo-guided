@@ -1,6 +1,524 @@
 div(ng-include='"components/navbar/navbar.html"')
 
-.container
-  .row
-    .col-md-12
-    | This is the kitchensink view.
+section.block
+    h2#common-layouts.section-title.red(data-type='anchor') Common Layouts
+    .app-block
+      .title Single Column Layout
+      .content
+        .row
+          .col-xs-12
+            | You can use the mark tag to
+            mark highlight
+            | text.
+            br
+            del This line of text is meant to be treated as deleted text.
+            br
+            s This line of text is meant to be treated as no longer accurate.
+            br
+            ins This line of text is meant to be treated as an addition to the document.
+            br
+            u This line of text will render as underlined
+            br
+            small This line of text is meant to be treated as fine print.
+            br
+            strong rendered as bold text
+            br
+            em rendered as italicized text
+            br
+            p.text-left Left aligned text.
+            p.text-center Center aligned text.
+            p.text-right Right aligned text.
+            p.text-justify Justified text.
+            p.text-nowrap No wrap text.
+            p.text-lowercase Lowercased text.
+            p.text-uppercase Uppercased text.
+            p.text-capitalize Capitalized text.
+            abbr(title='attribute') attr
+            abbr.initialism(title='HyperText Markup Language') HTML
+            address
+              strong Twitter, Inc.
+              br
+              | 795 Folsom Ave, Suite 600
+              br
+              | San Francisco, CA 94107
+              br
+              abbr(title='Phone') P:
+              | (123) 456-7890
+            address
+              strong Full Name
+              br
+              a(href='mailto:#') first.last@example.com
+            blockquote
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+              footer
+                | Someone famous in
+                cite(title='Source Title') Source Title
+            blockquote.blockquote-reverse
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+              footer
+                | Someone famous in
+                cite(title='Source Title') Source Title
+        h2.section-title(data-type='anchor') Standard Input Types
+        .row
+          .col-xs-12
+            label(for='first-input') Standard Input
+            input(name='first-input', placeholder='First Input')
+            label(for='textarea') Standard Textarea
+            textarea(name='input', placeholder='First Input')
+        h2.section-title(data-type='anchor') Checkboxes / Checkboxes Configurations
+        .row
+          .col-sm-2
+            h3.note Checkboxes
+            .checkbox
+              label
+                input(type='checkbox', value='')
+                | Enabled
+            .checkbox.disabled
+              label
+                input(type='checkbox', value='', disabled='disabled')
+                | Disabled
+          .col-sm-2
+            h3.note Radios
+            .radio
+              label
+                input(type='radio', value='')
+                | Enabled
+            .radio.disabled
+              label
+                input(type='radio', value='', disabled='disabled')
+                | Disabled
+          .col-sm-4
+            h3.note Inline Checkboxes
+            label.checkbox-inline
+              input#inlineCheckbox1(type='checkbox', value='option1')
+              | Opt 1
+            label.checkbox-inline
+              input#inlineCheckbox2(type='checkbox', value='option2')
+              | Opt 2
+            label.checkbox-inline
+              input#inlineCheckbox3(type='checkbox', value='option3')
+              | Opt 3
+          .col-sm-4
+            h3.note Inline Radios
+            label.disabled.radio-inline
+              input#inlineRadio1(type='radio', name='inlineRadioOptions', value='option1', disabled='disabled')
+              | Opt 1
+            label.radio-inline
+              input#inlineRadio2(type='radio', name='inlineRadioOptions', value='option2')
+              | Opt 2
+            label.radio-inline
+              input#inlineRadio3(type='radio', name='inlineRadioOptions', value='option3')
+              | Opt 3
+        .row
+          .col-xs-12
+            form(role='form')
+              .form-group
+                label(for='exampleInputEmail1') Email address
+                input#exampleInputEmail1.form-control(type='email', placeholder='Enter email')
+              .form-group
+                label(for='exampleInputPassword1') Password
+                input#exampleInputPassword1.form-control(type='password', placeholder='Password')
+              .form-group
+                label(for='exampleInputFile') File input
+                input#exampleInputFile(type='file')
+                p.help-block Example block-level help text here.
+              .checkbox
+                label
+                  input(type='checkbox')
+                  | Check me out
+              button.btn.btn-default(type='submit') Submit
+
+section.block
+    .app-block
+        .title test
+        .content
+          .row
+            .col-sm-6
+              label(for='multi') Multi-switch
+              .row
+                .col-xs-12
+                  input.full-width(type='text', name='multi-single')
+              .row
+                .col-sm-6
+                  input(type='text', name='multi-single')
+                .col-sm-6
+                  input(type='text', name='multi-single')
+              .row
+                .col-xs-12
+                  label(for='multi') Multi-switch
+                  select.chosen-select(name='', multiple='multiple')
+                    option(value='')
+                    option(value='') Test
+                    option(value='') Testing 2
+                    option(value='')
+                    option(value='')
+                    | option
+            .col-sm-6
+              label(for='textarea', width='100') Multi-switch
+              textarea.full-width(name='textarea')
+      .app-block
+        h2.title Buttons & Button Configurations
+        .content
+          h2.section-title Button Groups
+          .row
+            .col-sm-4
+              h3 Buttons Group
+              .btn-group
+                button.btn.btn-primary(type='button') Left
+                button.btn.btn-default(type='button') Middle
+                button.btn.btn-default(type='button') Right
+            .col-sm-4
+              h3 Justified button groups
+              .btn-group.btn-group-justified
+                .btn-group
+                  button.btn.btn-default(type='button') Left
+                .btn-group
+                  button.btn.btn-default(type='button') Middle
+                .btn-group
+                  button.btn.btn-default(type='button') Right
+          .row
+            .col-xs-12
+              h2.section-title Button Sizes
+            .col-sm-4
+              .btn-group.btn-group-lg
+                h3 Large
+                button.btn.btn-default(type='button') Left
+                button.btn.btn-default(type='button') Middle
+                button.btn.btn-default(type='button') Right
+            .col-sm-3
+              .btn-group
+                h3 Default
+                button.btn.btn-default(type='button') Left
+                button.btn.btn-default(type='button') Middle
+                button.btn.btn-default(type='button') Right
+            .col-sm-3
+              .btn-group.btn-group-sm
+                h3 Small
+                button.btn.btn-default(type='button') Left
+                button.btn.btn-default(type='button') Middle
+                button.btn.btn-default(type='button') Right
+            .col-sm-2
+              .btn-group.btn-group-xs
+                h3.small Extra Small
+                button.btn.btn-default(type='button') Left
+                button.btn.btn-default(type='button') Middle
+                button.btn.btn-default(type='button') Right
+          .row
+            .col-sm-5
+              h3 Button Toolbar
+              .btn-toolbar(role='toolbar')
+                .btn-group
+                  button.btn.btn-default(type='button') 1
+                  button.btn.btn-default(type='button') 2
+                  button.btn.btn-default(type='button') 3
+                  button.btn.btn-default(type='button') 4
+                .btn-group
+                  button.btn.btn-default(type='button') 5
+                  button.btn.btn-default(type='button') 6
+                  button.btn.btn-default(type='button') 7
+                .btn-group
+                  button.btn.btn-default(type='button') 8
+            .col-sm-3
+              h3 Buttons Vertical
+              .btn-group-vertical
+                button.btn.btn-default(type='button') Button
+                button.btn.btn-default(type='button') Button
+                .btn-group
+                  button#btnGroupVerticalDrop1.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown')
+                    | Dropdown
+                    span.caret
+                  ul.dropdown-menu(role='menu', aria-labelledby='btnGroupVerticalDrop1')
+                    li
+                      a(href='#') Dropdown link
+                    li
+                      a(href='#') Dropdown link
+                button.btn.btn-default(type='button') Button
+                button.btn.btn-default(type='button') Button
+                .btn-group
+                  button#btnGroupVerticalDrop2.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown')
+                    | Dropdown
+                    span.caret
+                  ul.dropdown-menu(role='menu', aria-labelledby='btnGroupVerticalDrop2')
+                    li
+                      a(href='#') Dropdown link
+                    li
+                      a(href='#') Dropdown link
+                .btn-group
+                  button#btnGroupVerticalDrop3.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown')
+                    | Dropdown
+                    span.caret
+                  ul.dropdown-menu(role='menu', aria-labelledby='btnGroupVerticalDrop3')
+                    li
+                      a(href='#') Dropdown link
+                    li
+                      a(href='#') Dropdown link
+                .btn-group
+                  button#btnGroupVerticalDrop4.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown')
+                    | Dropdown
+                    span.caret
+                  ul.dropdown-menu(role='menu', aria-labelledby='btnGroupVerticalDrop4')
+                    li
+                      a(href='#') Dropdown link
+                    li
+                      a(href='#') Dropdown link
+          .row
+            .col-xs-12
+              .section-title Dropdowns
+            .col-sm-5
+              .row
+                .col-sm-5
+                  h3 Dropdown
+                  .dropdown
+                    button#dropdownMenu1.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown')
+                      | Dropdown
+                      span.caret
+                    ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu1')
+                      li.dropdown-header(role='presentation') Dropdown header
+                      li.divider(role='presentation')
+                      li(role='presentation')
+                        a(role='menuitem', tabindex='-1', href='#') Action
+                      li(role='presentation')
+                        a(role='menuitem', tabindex='-1', href='#') Another action
+                      li(role='presentation')
+                        a(role='menuitem', tabindex='-1', href='#') Something else here
+                      li.divider(role='presentation')
+                      li(role='presentation')
+                        a(role='menuitem', tabindex='-1', href='#') Separated link
+                .col-sm-7
+                  h3 Nested Dropdown
+                  .btn-group
+                    button.btn.btn-default(type='button') 1
+                    button.btn.btn-default(type='button') 2
+                    .btn-group
+                      button.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown')
+                        | Dropdown
+                        span.caret
+                      ul.dropdown-menu(role='menu')
+                        li.disabled(role='presentation')
+                          a(href='#') Dropdown link
+                        li
+                          a(href='#') Dropdown link
+            .col-sm-2
+              h3 Dropup
+              .btn-group.dropup
+                button.btn.btn-default(type='button') Dropup
+                button.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown')
+                  span.caret
+                  span.sr-only Toggle Dropdown
+                ul.dropdown-menu(role='menu')
+                  li.disabled(role='presentation')
+                    a(href='#') Dropdown link
+                  li
+                    a(href='#') Dropdown link
+            .col-sm-3
+              h3 Split Button Dropdowns
+              .btn-group
+                button.btn.btn-danger(type='button') Action
+                button.btn.btn-danger.dropdown-toggle(type='button', data-toggle='dropdown')
+                  span.caret
+                  span.sr-only Toggle Dropdown
+                ul.dropdown-menu(role='menu')
+                  li
+                    a(href='#') Action
+                  li
+                    a(href='#') Another action
+                  li
+                    a(href='#') Something else here
+                  li.divider
+                  li
+                    a(href='#') Separated link
+          .row
+            .col-sm-8
+              h3 Single Button Dropdowns
+              .btn-group
+                button.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown')
+                  | Action
+                  span.caret
+                ul.dropdown-menu(role='menu')
+                  li
+                    a(href='#') Action
+                  li
+                    a(href='#') Another action
+                  li
+                    a(href='#') Something else here
+                  li.divider
+                  li
+                    a(href='#') Separated link
+              .btn-group
+                button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown')
+                  | Action
+                  span.caret
+                ul.dropdown-menu(role='menu')
+                  li
+                    a(href='#') Action
+                  li
+                    a(href='#') Another action
+                  li
+                    a(href='#') Something else here
+                  li.divider
+                  li
+                    a(href='#') Separated link
+              .btn-group
+                button.btn.btn-success.dropdown-toggle(type='button', data-toggle='dropdown')
+                  | Action
+                  span.caret
+                ul.dropdown-menu(role='menu')
+                  li
+                    a(href='#') Action
+                  li
+                    a(href='#') Another action
+                  li
+                    a(href='#') Something else here
+                  li.divider
+                  li
+                    a(href='#') Separated link
+              .btn-group
+                button.btn.btn-info.dropdown-toggle(type='button', data-toggle='dropdown')
+                  | Action
+                  span.caret
+                ul.dropdown-menu(role='menu')
+                  li
+                    a(href='#') Action
+                  li
+                    a(href='#') Another action
+                  li
+                    a(href='#') Something else here
+                  li.divider
+                  li
+                    a(href='#') Separated link
+              .btn-group
+                button.btn.btn-warning.dropdown-toggle(type='button', data-toggle='dropdown')
+                  | Action
+                  span.caret
+                ul.dropdown-menu(role='menu')
+                  li
+                    a(href='#') Action
+                  li
+                    a(href='#') Another action
+                  li
+                    a(href='#') Something else here
+                  li.divider
+                  li
+                    a(href='#') Separated link
+              .btn-group
+                button.btn.btn-danger.dropdown-toggle(type='button', data-toggle='dropdown')
+                  | Action
+                  span.caret
+                ul.dropdown-menu(role='menu')
+                  li
+                    a(href='#') Action
+                  li
+                    a(href='#') Another action
+                  li
+                    a(href='#') Something else here
+                  li.divider
+                  li
+                    a(href='#') Separated link
+      .app-block
+        .content
+          .row
+            .input-group
+              span.input-group-addon @
+              input.form-control(type='text', placeholder='Username')
+            .input-group
+              input.form-control(type='text')
+              span.input-group-addon .00
+            .input-group
+              span.input-group-addon $
+              input.form-control(type='text')
+              span.input-group-addon .00
+          .row
+            .col-sm-4
+              .input-group.input-group-lg
+                span.input-group-addon @
+                input.form-control(type='text', placeholder='Username')
+            .col-sm-4
+              .input-group
+                span.input-group-addon @
+                input.form-control(type='text', placeholder='Username')
+            .col-sm-4
+              .input-group.input-group-sm
+                span.input-group-addon @
+                input.form-control(type='text', placeholder='Username')
+          .row
+            .col-sm-6
+              .input-group
+                span.input-group-addon
+                  input(type='checkbox')
+                input.form-control(type='text')
+            .col-sm-6
+              .input-group
+                span.input-group-addon
+                  input(type='radio')
+                input.form-control(type='text')
+          .row
+            .col-sm-6
+              .input-group
+                span.input-group-btn
+                  button.btn.btn-default(type='button') Go!
+                input.form-control(type='text')
+            .col-sm-6
+              .input-group
+                input.form-control(type='text')
+                span.input-group-btn
+                  button.btn.btn-default(type='button') Go!
+          .row
+            .col-sm-6
+              .input-group
+                .input-group-btn
+                  button.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown')
+                    | Action
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='#') Action
+                    li
+                      a(href='#') Another action
+                    li
+                      a(href='#') Something else here
+                    li.divider
+                    li
+                      a(href='#') Separated link
+                input.form-control(type='text')
+            .col-sm-6
+              .input-group
+                input.form-control(type='text')
+                .input-group-btn
+                  button.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown')
+                    | Action
+                    span.caret
+                  ul.dropdown-menu.dropdown-menu-right(role='menu')
+                    li
+                      a(href='#') Action
+                    li
+                      a(href='#') Another action
+                    li
+                      a(href='#') Something else here
+                    li.divider
+                    li
+                      a(href='#') Separated link
+          .row
+            .col-xs-12
+              ul.nav.nav-tabs(role='tablist')
+                li.active
+                  a(href='#home', role='tab', data-toggle='tab') Home
+                li
+                  a(href='#profile', role='tab', data-toggle='tab') Profile
+                li
+                  a(href='#msgs', role='tab', data-toggle='tab') Messages
+                li
+                  a(href='#settings', role='tab', data-toggle='tab') Settings
+              .tab-content
+                #home.tab-pane.active
+                  p
+                    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla lacinia tellus id arcu dapibus, ut accumsan arcu rutrum. Duis tempus nisl at justo rhoncus, eu ultricies enim sollicitudin. In hac habitasse platea dictumst. Aliquam consequat eleifend urna ac tempus. Aenean pellentesque consequat ipsum, et cursus dui egestas id. Donec libero quam, sodales nec enim ut, iaculis lobortis felis. Ut dictum, augue a laoreet laoreet, ligula justo vulputate sem, et rutrum sapien purus et enim. Suspendisse lobortis nibh quis nisi interdum, at facilisis nisi consectetur. Integer tincidunt nunc enim, ut mollis leo congue quis. Donec porta vitae quam quis feugiat. Aliquam vel imperdiet quam.
+                  p
+                    | Aliquam ultricies sem a velit interdum, quis accumsan purus mollis. Aliquam vitae odio leo. Fusce commodo mauris diam, vitae tempus velit facilisis in. Quisque rutrum tincidunt porta. Cras eget mi quis ipsum egestas vehicula. Curabitur molestie elementum metus, nec porttitor arcu adipiscing sit amet. Curabitur justo ante, porttitor non tellus at, pellentesque vulputate diam. Quisque vel eros quis nunc pellentesque viverra sit amet sed tortor. In elit sem, rhoncus ut justo sed, porttitor hendrerit urna. Cras eros libero, interdum et pulvinar quis, hendrerit sed leo. Mauris feugiat fermentum suscipit.
+                  p
+                    | Quisque suscipit ornare aliquam. In eu ornare leo, vehicula vulputate sem. Nam risus tellus, laoreet vitae libero vel, accumsan sodales nibh. Pellentesque libero ipsum, vestibulum a scelerisque sed, euismod at orci. Duis at neque in elit blandit feugiat et vel nunc. Sed eu semper velit. Fusce dolor massa, ultrices ut varius pulvinar, varius vitae metus. Nunc facilisis semper vehicula. Vivamus ultricies dolor tempor porta porttitor. Sed quis ullamcorper mi, et porttitor justo. Vestibulum justo diam, imperdiet ac enim eget, sollicitudin sagittis turpis. Cras mollis sit amet ante id tristique. Aenean faucibus felis velit, ut scelerisque quam ultrices nec.
+                #profile.tab-pane profile stuff
+                #msgs.tab-pane messages stuff messages stuff messages stuff
+                #settings.tab-pane settings stuff
+
