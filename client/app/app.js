@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('rhlabsangular', [
+angular.module('rhlabsangularApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',

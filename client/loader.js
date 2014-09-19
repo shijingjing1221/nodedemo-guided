@@ -7,7 +7,7 @@
         'use strict';
 
         if (!window.LABS_DEBUG) {
-            window.deps = ['app/vendor.js?bust=0.0.0', 'app/app.js?bust=0.0.0'];
+            window.deps = ['app/vendor.js?bust=0.0.1', 'app/app.js?bust=0.0.1'];
         }
 
         window.require.config({
@@ -15,7 +15,7 @@
         });
 
         window.chrometwo_require(window.deps, function() {
-            angular.bootstrap(document, ['rhlabsangular']);
+            angular.bootstrap(document, ['rhlabsangularApp']);
             jq('#rhlabsangular').fadeIn();
         });
     });

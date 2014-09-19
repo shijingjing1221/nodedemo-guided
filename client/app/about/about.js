@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('rhlabsangular')
+angular.module('rhlabsangularApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('about', {
