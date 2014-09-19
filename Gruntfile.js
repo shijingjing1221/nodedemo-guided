@@ -312,7 +312,7 @@ module.exports = function(grunt) {
     ngtemplates: {
       options: {
         // This should be the name of your apps angular module
-        module: '<%= pkg.name %>',
+        module: '<%= pkg.name %>App',
         htmlmin: {
           collapseBooleanAttributes: true,
           collapseWhitespace: true,
