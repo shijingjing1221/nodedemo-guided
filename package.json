@@ -61,7 +61,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "start": "supervisor server/app.js",
+    "start": "forever server/app.js",
     "test": "grunt test",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
   },
