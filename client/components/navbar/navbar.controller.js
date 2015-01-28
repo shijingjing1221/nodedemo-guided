@@ -4,16 +4,13 @@ angular.module('rhlabsangularApp')
   .controller('NavbarCtrl', function($scope, $location) {
     $scope.menu = [{
       'title': 'Home',
-      'link': '#/'
-    }, {
-      'title': 'Kitchen Sink',
-      'link': '#/kitchensink'
+      'link': ''
     }, {
       'title': 'About',
-      'link': '#/about'
+      'link': 'about'
     }];
 
     $scope.isActive = function(route) {
-      return route === '#' + $location.path();
+      return ('/' + route) === $location.path();
     };
   });

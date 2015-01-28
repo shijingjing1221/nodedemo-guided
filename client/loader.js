@@ -1,17 +1,19 @@
 /*global document, window, angular*/
 (function() {
   window.chrometwo_require([
-    'angular128',
     'jquery'
-  ], function(angular, jq) {
+  ], function(jq) {
     'use strict';
-
     window.require.config({
-      baseUrl: '/labs/rhlabsangular'
+      urlArgs: ''
     });
-
+    var base = '/labs/rhlabsangular/';
     if (!window.LABS_DEBUG) {
-      window.deps = ['app/vendor.js?bust=0.0.2', 'app/app.js?bust=0.0.2'];
+      window.deps = ['app/vendor.js', 'app/app.js'];
+    } else {
+      window.deps = window.deps.map(function(dep) {
+        return base + dep + '.js';
+      });
     }
     // keep track of deferreds we are loading
     var dfds = [];

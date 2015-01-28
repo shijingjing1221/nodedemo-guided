@@ -16,8 +16,7 @@ module.exports = function(grunt) {
     ngtemplates: 'grunt-angular-templates',
     protractor: 'grunt-protractor-runner',
     injector: 'grunt-asset-injector',
-    preprocess: 'grunt-preprocess',
-    replace: 'grunt-text-replace'
+    preprocess: 'grunt-preprocess'
   });
 
   // Time how long tasks take. Can help when optimizing build times
@@ -51,7 +50,7 @@ module.exports = function(grunt) {
     },
     open: {
       server: {
-        url: 'https://foo.redhat.com:1337/labs/<%= pkg.name %>/'
+        url: 'https://ci.foo.redhat.com:1337/labs/<%= pkg.name %>/'
       }
     },
     watch: {
@@ -215,31 +214,12 @@ module.exports = function(grunt) {
       }
     },
 
-    replace: {
-      client: {
-        src: ['<%= yeoman.client %>/index.html', '<%= yeoman.client %>/loader.js'],
-        overwrite: true,
-        replacements: [{
-          from: /(bust=)\d{1,3}\.\d{1,3}\.\d{1,3}/g,
-          to: '$1<%= pkg.version %>'
-        }]
-      },
-      dist: {
-        src: ['<%= yeoman.dist %>/public/index.html'],
-        overwrite: true,
-        replacements: [{
-          from: /(<link[^\>]+href=['"][^"']+)(["'])/gm,
-          to: '$1?bust=<%= pkg.version %>$2'
-        }]
-      }
-    },
-
     // Automatically inject Bower components into the app
     wiredep: {
       target: {
         src: '<%= yeoman.client %>/index.html',
         ignorePath: '<%= yeoman.client %>/',
-        exclude: ['/angular/', '/json3/', '/jquery/', '/es5-shim/', /font-awesome.css/],
+        exclude: ['/json3/', '/jquery/', '/bootstrap/', '/es5-shim/', /font-awesome.css/],
         fileTypes: {
           html: {
             replace: {
@@ -284,11 +264,13 @@ module.exports = function(grunt) {
       options: {
         assetsDirs: [
           '<%= yeoman.dist %>/public',
+          '<%= yeoman.dist %>/public/app/*.loader.js',
           '<%= yeoman.dist %>/public/assets/images'
         ],
         // This is so we update image references in our ng-templates
         patterns: {
           js: [
+            [/(app\/.*?\.js)/gm, 'Update the JS to reference our revved JS'],
             [/(assets\/images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved images']
           ]
         }
@@ -313,15 +295,6 @@ module.exports = function(grunt) {
       options: {
         // This should be the name of your apps angular module
         module: '<%= pkg.name %>App',
-        htmlmin: {
-          collapseBooleanAttributes: true,
-          collapseWhitespace: true,
-          removeAttributeQuotes: true,
-          removeEmptyAttributes: true,
-          removeRedundantAttributes: true,
-          removeScriptTypeAttributes: true,
-          removeStyleLinkTypeAttributes: true
-        },
         usemin: 'app/app.js'
       },
       main: {
@@ -350,7 +323,6 @@ module.exports = function(grunt) {
             'bower_components/**/*',
             'assets/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
             'assets/fonts/**/*',
-            'loader.js',
             'index.html'
           ]
         }, {
@@ -473,7 +445,7 @@ module.exports = function(grunt) {
             '<%= yeoman.client %>/app',
             '<%= yeoman.client %>/components'
           ],
-          compass: true
+          compass: false
         },
         files: {
           '.tmp/app/app.css': '<%= yeoman.client %>/app/app.scss'
@@ -543,6 +515,26 @@ module.exports = function(grunt) {
         }
       }
     },
+
+    rev: {
+      dist: {
+        files: {
+          src: [
+            '<%= yeoman.dist %>/public/app/app.js',
+            '<%= yeoman.dist %>/public/app/vendor.js',
+            '<%= yeoman.dist %>/public/{,*/}*.css'
+          ]
+        }
+      },
+      loader: {
+        files: {
+          src: [
+            '<%= yeoman.dist %>/public/app/loader.js'
+          ]
+        }
+      }
+    },
+
   });
 
   // Used for delaying livereload until after server has restarted
@@ -645,14 +637,15 @@ module.exports = function(grunt) {
     'ngtemplates',
     'concat',
     'ngAnnotate',
-    'replace:client',
     'copy:dist',
-    'replace:dist',
     'copy:openshift',
     'cssmin',
     'uglify',
+    'rev:dist',
     'preprocess:html',
-    'usemin'
+    'usemin',
+    'rev:loader',
+    'usemin:html'
   ]);
 
   grunt.registerTask('default', [

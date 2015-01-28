@@ -1,9 +1,6 @@
 'use strict';
 
 angular.module('rhlabsangularApp', [
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
   'ui.router',
   'ui.bootstrap'
 ])
