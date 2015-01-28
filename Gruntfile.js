@@ -1,13 +1,6 @@
-// Generated on 2014-08-22 using generator-angular-fullstack 2.0.10
 'use strict';
 
 module.exports = function(grunt) {
-  var localConfig;
-  try {
-    localConfig = require('./server/config/local.env');
-  } catch (e) {
-    localConfig = {};
-  }
 
   // Load grunt tasks automatically, when needed
   require('jit-grunt')(grunt, {
@@ -411,8 +404,7 @@ module.exports = function(grunt) {
       },
       prod: {
         NODE_ENV: 'production'
-      },
-      all: localConfig
+      }
     },
 
     // Compiles Jade to html
@@ -555,13 +547,12 @@ module.exports = function(grunt) {
 
   grunt.registerTask('serve', function(target) {
     if (target === 'dist') {
-      return grunt.task.run(['build', 'env:all', 'env:prod', 'express:prod', 'wait', 'open', 'express-keepalive']);
+      return grunt.task.run(['build', 'env:prod', 'express:prod', 'wait', 'open', 'express-keepalive']);
     }
 
     if (target === 'debug') {
       return grunt.task.run([
         'clean:server',
-        'env:all',
         'injector:sass',
         'concurrent:server',
         'injector',
@@ -573,7 +564,6 @@ module.exports = function(grunt) {
 
     grunt.task.run([
       'clean:server',
-      'env:all',
       'injector:sass',
       'concurrent:server',
       'injector',
@@ -594,13 +584,11 @@ module.exports = function(grunt) {
   grunt.registerTask('test', function(target) {
     if (target === 'server') {
       return grunt.task.run([
-        'env:all',
         'env:test'
       ]);
     } else if (target === 'client') {
       return grunt.task.run([
         'clean:server',
-        'env:all',
         'injector:sass',
         'concurrent:test',
         'injector',
@@ -610,7 +598,6 @@ module.exports = function(grunt) {
     } else if (target === 'e2e') {
       return grunt.task.run([
         'clean:server',
-        'env:all',
         'env:test',
         'injector:sass',
         'concurrent:test',
