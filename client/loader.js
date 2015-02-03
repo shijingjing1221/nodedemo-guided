@@ -4,14 +4,15 @@
     'jquery'
   ], function(jq) {
     'use strict';
+    var deps;
     window.require.config({
       urlArgs: ''
     });
     var base = '/labs/rhlabsangular/';
     if (!window.LABS_DEBUG) {
-      window.deps = ['app/vendor.js', 'app/app.js'];
+      deps = ['app/vendor.js', 'app/app.js'];
     } else {
-      window.deps = window.deps.map(function(dep) {
+      deps = window.deps.map(function(dep) {
         return base + dep + '.js';
       });
     }
@@ -37,8 +38,8 @@
       return dfds[index].promise();
     };
     // Queue up loading of modules
-    for (var i = 0; i < window.deps.length; i++) {
-      qLoad(window.deps[i], i);
+    for (var i = 0; i < deps.length; i++) {
+      qLoad(deps[i], i);
     }
     // Once all modules have loaded bootstrap it
     jq.when.apply(jq, dfds).then(function() {
