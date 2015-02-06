@@ -217,7 +217,7 @@ module.exports = function(grunt) {
           html: {
             replace: {
               js: function(filePath) {
-                return '/*<script src="' + filePath + '"/>*/\n        window.deps.push("' + filePath.replace('.js', '') + '");';
+                return '/*<script src="' + filePath + '"/>*/\n        window.deps.push("' + filePath.replace(/\.js$/, '') + '");';
               },
               css: '<link rel="stylesheet" href="{{filePath}}" />'
             }
