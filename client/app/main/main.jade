@@ -2,7 +2,7 @@
   .col-md-10
     .dropzone(ngf-drop='', ngf-select='', ngf-drag-over-class="'dragover'", ngf-multiple='false', ngf-allow-dir='false', ngf-change="loadFile($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event, 'sar', loadSarFile)")
       i.fa.fa-arrow-down
-      span Select or drop the sar file here
+      span {{ 'select_file_sar'| translate }}
       br
       span(ng-show='sar.loading') Sar file is loading
       div(ng-show='sar.files.length')

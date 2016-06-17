@@ -98,7 +98,8 @@ module.exports = function(grunt) {
           '{.tmp,<%= yeoman.client %>}/{app,components}/**/*.js',
           '!{.tmp,<%= yeoman.client %>}{app,components}/**/*.spec.js',
           '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js',
-          '<%= yeoman.client %>/assets/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%= yeoman.client %>/assets/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}',
+          '<%= yeoman.client %>/assets/languages/*.json'
         ],
         options: {
           livereload: true
@@ -258,7 +259,8 @@ module.exports = function(grunt) {
         assetsDirs: [
           '<%= yeoman.dist %>/public',
           '<%= yeoman.dist %>/public/app/*.loader.js',
-          '<%= yeoman.dist %>/public/assets/images'
+          '<%= yeoman.dist %>/public/assets/images',
+          '<%= yeoman.dist %>/public/assets/languages'
         ],
         // This is so we update image references in our ng-templates
         patterns: {
@@ -316,7 +318,8 @@ module.exports = function(grunt) {
             'bower_components/**/*',
             'assets/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
             'assets/fonts/**/*',
-            'index.html'
+            'index.html',
+            'assets/languages/*.json'
           ]
         }, {
           expand: true,
