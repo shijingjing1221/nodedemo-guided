@@ -29,6 +29,10 @@ app.get('/', function(req, res) {
   res.send(200);
 });
 
+app.get('/labs_key.txt', function(req, res) {
+  res.sendfile(path.resolve(publicDir + '/labs_key.txt'));
+});
+
 app.get(appPath + '*', function(req, res) {
     res.sendfile(path.resolve(publicDir + '/index.html'));
 });

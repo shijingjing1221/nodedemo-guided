@@ -1,5 +1,5 @@
 {
-  "name": "rhlabsangular",
+  "name": "rhma",
   "version": "0.0.1",
   "main": "server/app.js",
   "dependencies": {

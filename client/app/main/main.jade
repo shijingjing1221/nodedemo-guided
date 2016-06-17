@@ -1,19 +1,16 @@
-div(ng-include='"components/navbar/navbar.html"')
-
-header#banner.hero-unit
-  .container
-    h1 'Allo, 'Allo!
-    p.lead Kick-start your next web app with Angular
-    img(src='assets/images/yeoman.png', alt='I\'m Yeoman')
-
-.container
-  .row
-
-footer.footer
-  .container
-    p
-      | (based on) Angular Fullstack v2.0.10
-      = ' | '
-      a(href='https://twitter.com/tyhenkel') @tyhenkel
-      = ' | '
-      a(href='https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open') Issues
+.row
+  .col-md-10
+    .dropzone(ngf-drop='', ngf-select='', ngf-drag-over-class="'dragover'", ngf-multiple='false', ngf-allow-dir='false', ngf-change="loadFile($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event, 'sar', loadSarFile)")
+      i.fa.fa-arrow-down
+      span Select or drop the sar file here
+      br
+      span(ng-show='sar.loading') Sar file is loading
+      div(ng-show='sar.files.length')
+        div(ng-repeat='file in sar.files.slice(0)')
+          span {{file.webkitRelativePath || file.name}}
+          |  (
+          span(ng-switch='file.size > 1024*1024')
+            span(ng-switch-when='true') {{file.size / 1024 / 1024 | number:2}} MB
+            span(ng-switch-default='') {{file.size / 1024 | number:2}} kB
+          | )
+    div(ngf-no-file-drop='') File Drag/Drop is not supported for this browser

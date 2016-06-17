@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('rhlabsangularApp')
+angular.module('rhmaApp')
   .controller('MainCtrl', function ($scope) {
 
   });

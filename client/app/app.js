@@ -1,8 +1,9 @@
 'use strict';
 
-angular.module('rhlabsangularApp', [
+angular.module('rhmaApp', [
   'ui.router',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ngFileUpload'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider

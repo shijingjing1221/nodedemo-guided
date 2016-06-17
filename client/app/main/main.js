@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('rhlabsangularApp')
+angular.module('rhmaApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('main', {
