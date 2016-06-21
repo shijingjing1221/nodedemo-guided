@@ -8,7 +8,7 @@
     window.require.config({
       urlArgs: ''
     });
-    var base = '/labs/rhma/';
+    var base = '/labs/nodedemo/';
     if (!window.LABS_DEBUG) {
       deps = ['app/vendor.js', 'app/app.js'];
     } else {
@@ -44,9 +44,9 @@
     // Once all modules have loaded bootstrap it
     jq.when.apply(jq, dfds).then(function() {
       // Bootstrap angular app
-      angular.bootstrap(document, ['rhmaApp']);
+      angular.bootstrap(document, ['nodedemoApp']);
       // Fade in main element
-      jq('#rhma').fadeIn();
+      jq('#nodedemo').fadeIn();
     });
 
   });

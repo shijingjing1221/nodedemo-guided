@@ -1,6 +1,6 @@
 /*global angular*/
 
-angular.module('rhmaApp').factory('LocalizationService', function ($cookies) {
+angular.module('nodedemoApp').factory('LocalizationService', function ($cookies) {
     'use strict';
     var favoriteLanguage = '';
     switch ($cookies.get('rh_locale')) {

@@ -1,5 +1,5 @@
 {
-  "name": "rhma",
+  "name": "nodedemo",
   "version": "1.0.0",
   "main": "server/app.js",
   "dependencies": {

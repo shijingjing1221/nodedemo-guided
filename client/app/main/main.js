@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('rhmaApp')
+angular.module('nodedemoApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('main', {

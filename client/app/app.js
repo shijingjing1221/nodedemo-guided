@@ -1,9 +1,8 @@
 'use strict';
 
-angular.module('rhmaApp', [
+angular.module('nodedemoApp', [
   'ui.router',
   'ui.bootstrap',
-  'ngFileUpload',
   'ngCookies',
   'pascalprecht.translate'
 ])

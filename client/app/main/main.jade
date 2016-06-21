@@ -1,16 +1,7 @@
 .row
-  .col-md-10
-    .dropzone(ngf-drop='', ngf-select='', ngf-drag-over-class="'dragover'", ngf-multiple='false', ngf-allow-dir='false', ngf-change="loadFile($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event, 'sar', loadSarFile)")
-      i.fa.fa-arrow-down
-      span {{ 'select_file_sar'| translate }}
-      br
-      span(ng-show='sar.loading') Sar file is loading
-      div(ng-show='sar.files.length')
-        div(ng-repeat='file in sar.files.slice(0)')
-          span {{file.webkitRelativePath || file.name}}
-          |  (
-          span(ng-switch='file.size > 1024*1024')
-            span(ng-switch-when='true') {{file.size / 1024 / 1024 | number:2}} MB
-            span(ng-switch-default='') {{file.size / 1024 | number:2}} kB
-          | )
-    div(ngf-no-file-drop='') File Drag/Drop is not supported for this browser
+  .col-md-12
+    .title {{'app-title'|translate}}
+  .col-md-6
+    input(ng-model="test")
+  .col-md-6
+    div {{ test }}
