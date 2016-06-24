@@ -31,19 +31,19 @@ module.exports = function(grunt) {
       },
       dev: {
         options: {
-          script: 'server/app.js',
+          script: 'server/app_dev.js',
           debug: true
         }
       },
       prod: {
         options: {
-          script: 'dist/server/app.js'
+          script: 'dist/server/app_dev.js'
         }
       }
     },
     open: {
       server: {
-        url: 'https://jjshi.usersys.redhat.com:4443/labs/<%= pkg.name %>/'
+        url: 'http://localhost:9000/labs/<%= pkg.name %>/'
       }
     },
     watch: {
@@ -89,7 +89,7 @@ module.exports = function(grunt) {
         tasks: ['jade']
       },
       gruntfile: {
-        files: ['Gruntfile.js']
+        files: ['Gruntfile_dev.js']
       },
       livereload: {
         files: [
@@ -186,7 +186,7 @@ module.exports = function(grunt) {
     // Use nodemon to run server in debug mode with an initial breakpoint
     nodemon: {
       debug: {
-        script: 'server/app.js',
+        script: 'server/app_dev.js',
         options: {
           nodeArgs: ['--debug-brk'],
           env: {
@@ -211,7 +211,7 @@ module.exports = function(grunt) {
     // Automatically inject Bower components into the app
     wiredep: {
       target: {
-        src: '<%= yeoman.client %>/index.html',
+        src: '<%= yeoman.client %>/index_dev.html',
         ignorePath: '<%= yeoman.client %>/',
         exclude: ['/json3/', '/jquery/', '/bootstrap/', '/es5-shim/', /font-awesome.css/],
         fileTypes: {
@@ -235,7 +235,7 @@ module.exports = function(grunt) {
       },
       html: {
         src: [
-          '<%= yeoman.dist %>/public/index.html'
+          '<%= yeoman.dist %>/public/index_dev.html'
         ]
       }
     },
@@ -244,7 +244,7 @@ module.exports = function(grunt) {
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
     useminPrepare: {
-      html: ['<%= yeoman.client %>/index.html'],
+      html: ['<%= yeoman.client %>/index_dev.html'],
       options: {
         dest: '<%= yeoman.dist %>/public'
       }
@@ -318,7 +318,7 @@ module.exports = function(grunt) {
             'bower_components/**/*',
             'assets/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
             'assets/fonts/**/*',
-            'index.html',
+            'index_dev.html',
             'assets/languages/*.json'
           ]
         }, {
@@ -452,7 +452,7 @@ module.exports = function(grunt) {
       options: {
 
       },
-      // Inject application script files into index.html (doesn't include bower)
+      // Inject application script files into index_dev.html (doesn't include bower)
       scripts: {
         options: {
           transform: function(filePath) {
@@ -463,7 +463,7 @@ module.exports = function(grunt) {
           endtag: '<!-- endinjector -->'
         },
         files: {
-          '<%= yeoman.client %>/index.html': [
+          '<%= yeoman.client %>/index_dev.html': [
             ['{.tmp,<%= yeoman.client %>}/{app,components}/**/*.js',
               '!{.tmp,<%= yeoman.client %>}/app/app.js',
               '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.spec.js',
@@ -492,7 +492,7 @@ module.exports = function(grunt) {
         }
       },
 
-      // Inject component css into index.html
+      // Inject component css into index_dev.html
       css: {
         options: {
           transform: function(filePath) {
@@ -504,7 +504,7 @@ module.exports = function(grunt) {
           endtag: '<!-- endinjector -->'
         },
         files: {
-          '<%= yeoman.client %>/index.html': [
+          '<%= yeoman.client %>/index_dev.html': [
             '<%= yeoman.client %>/{app,components}/**/*.css'
           ]
         }
@@ -521,10 +521,10 @@ module.exports = function(grunt) {
           ]
         }
       },
-      loader: {
+      loader_dev: {
         files: {
           src: [
-            '<%= yeoman.dist %>/public/app/loader.js'
+            '<%= yeoman.dist %>/public/app/loader_dev.js'
           ]
         }
       }
@@ -634,7 +634,7 @@ module.exports = function(grunt) {
     'rev:dist',
     'preprocess:html',
     'usemin',
-    'rev:loader',
+    'rev:loader_dev',
     'usemin:html'
   ]);
 
