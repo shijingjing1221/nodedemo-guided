@@ -1,4 +1,3 @@
-
 ## Local Development
 
 1. Setup [accessproxy](https://github.com/redhataccess/accessproxy).
