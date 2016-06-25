@@ -6,4 +6,6 @@
 2. In a terminal start the proxy with `accessproxy`
 3. In another terminal navigate to your apps directory and run the following commands
   - `npm install && bower install`
-  - `grunt serve`
+  - Start the project by either way
+    - `grunt serve` to start the redirect url
+    - `grunt serve --gruntfile Gruntfile_dev.js` to start the lcoalhost url
