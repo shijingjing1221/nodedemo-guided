@@ -1,4 +1,3 @@
-# Red Hat Labs Angular
 
 ## Local Development
 
