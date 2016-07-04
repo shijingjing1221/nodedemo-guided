@@ -8,6 +8,7 @@
     - `grunt serve` to start the redirect url
     - `grunt serve --gruntfile Gruntfile_dev.js` to start the localhost url http://localhost:9000/labs/nodedemo
 4. (Optional) Enable livereload, only for `grunt serve --gruntfile Gruntfile_dev.js`
+
     Install the livereload extension in Chrome extension market.
     Open the http://localhost:9000/labs/nodedemo, and click the icon of livereload extension. **Then when you change the code, the web page is auto refresh**. Refer to the following snapshot.
     
