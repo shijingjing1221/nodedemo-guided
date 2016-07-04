@@ -9,5 +9,25 @@
     - `grunt serve --gruntfile Gruntfile_dev.js` to start the localhost url http://localhost:9000/labs/nodedemo
 4. (Optional) Enable livereload
     Install the livereload extension in Chrome extension market.
-    Open the http://localhost:9000/labs/nodedemo, and click the icon of livereload extension. Refer to the following snapshot.
-
+    Open the http://localhost:9000/labs/nodedemo, and click the icon of livereload extension. **Then when you change the code, the web page is auto refresh**. Refer to the following snapshot.
+    
+    
+    Open the extension marget page: 
+    
+    ![alt tag](readme_picture/step1.png)
+    
+    
+    Search livereload and check the details: 
+    
+    ![alt tag](readme_picture/step2.png)
+    
+    
+    After installation, you will see livereload icon: 
+    
+    ![alt tag](readme_picture/step3.png)
+    
+    
+    Open http://localhost:9000/labs/nodedemo, click the livereload icon to enable it: 
+    ![alt tag](readme_picture/step4.png)
+    
+    Then when you change the code, the web page is auto refresh.
