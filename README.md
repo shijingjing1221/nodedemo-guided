@@ -25,10 +25,10 @@
     
     After installation, you will see livereload icon: 
     
-    ![alt tag](readme_picture/step3.png)
+    ![alt tag](readme_picture/guided1.png)
     
     
     Open http://localhost:9000/labs/nodedemo, click the livereload icon to enable it: 
-    ![alt tag](readme_picture/step4.png)
+    ![alt tag](readme_picture/guided2.png)
     
     Then when you change the code, the web page is auto refresh.
