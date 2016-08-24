@@ -5,6 +5,7 @@ angular.module('nodedemoApp')
     $stateProvider
       .state('main', {
         url: '/',
+          abstract: true,
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl'
       });

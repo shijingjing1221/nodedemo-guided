@@ -1,7 +1,8 @@
 .row
-  .col-md-12
-    .title {{'app-title'|translate}}
-  .col-md-6
-    input(ng-model="test")
-  .col-md-6
-    div {{ test }}
+    .col-xs-2
+        nav.subnav.subnav-progress
+            ul
+                li(ng-repeat="item in navigation.menuItems" ui-sref-active="current" ng-show="isShown(item.step)").li
+                    a(ui-sref="{{item.link}}" ng-style="isActive(item.link) ? {color: 'white'} : {color: '#808080'}") {{item.title}}
+    .col-xs-10
+        div(ui-view="")
