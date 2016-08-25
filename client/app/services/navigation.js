@@ -19,7 +19,6 @@ angular.module('nodedemoApp').factory('Navigation', function($state) {
     var lastIndex = menuItems.length;
 
     var navigation = {
-
         maxStep: initIndex,
         currentMenu: menuItems[initIndex]
     };
@@ -47,7 +46,15 @@ angular.module('nodedemoApp').factory('Navigation', function($state) {
         updateMaxStep(nextIndex);
         updateMenuItems(nextIndex);
         $state.go("main" + navigation.currentMenu.link);
+    };
 
+    var goPrevious = function(){
+        var previousIndex = navigation.currentMenu.step - 1;
+        if(previousIndex < initIndex){
+            previousIndex = initIndex;
+        }
+        updateMenuItems(previousIndex);
+        $state.go("main" + navigation.currentMenu.link);
     };
 
     var startOver = function() {
@@ -63,6 +70,7 @@ angular.module('nodedemoApp').factory('Navigation', function($state) {
         updateMenuItems: updateMenuItems,
         init: init,
         goNext: goNext,
+        goPrevious: goPrevious,
         startOver: startOver
     };
 });

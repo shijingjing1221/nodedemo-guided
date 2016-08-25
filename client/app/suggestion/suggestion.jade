@@ -2,7 +2,7 @@
    Created by jshi on 8/24/16.
 
 .app-block.app-block-guided
-    h2.title Suggestion
+    h2.title Recommendations
     .content.form-horizontal
         .form-group
             .col-xs-3.col-xs-offset-2
@@ -10,5 +10,6 @@
             .col-xs-5
 
         .row
-            .col-xs-10
+            .col-xs-12
+                button(ng-click="navigation.goPrevious()").btn.btn-prev Previous
                 button(ng-click="navigation.startOver()").btn.btn-next.submit Start over
