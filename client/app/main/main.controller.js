@@ -11,6 +11,8 @@ angular.module('nodedemoApp')
             return $state.is('main' + route);
         };
         $scope.isShown = function(step) {
+            console.log("Navigation.navigation.maxStep",Navigation.navigation.maxStep);
+            console.log("step",step );
             return step <= Navigation.navigation.maxStep;
         };
         $scope.test = "nodedemo";
