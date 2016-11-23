@@ -11,5 +11,5 @@
 
         .row
             .col-xs-12
-                button(ng-click="navigation.goPrevious()").btn.btn-prev Previous
-                button(ng-click="navigation.startOver()").btn.btn-next.submit Start over
+                button.btn.btn-prev(ng-click="navigation.goPrevious()" translate="previous")
+                button.btn.btn-next.submit(ng-click="navigation.startOver()" translate="start_over")

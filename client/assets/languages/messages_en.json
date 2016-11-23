@@ -1,4 +1,7 @@
 {
-  "app-title": "Red Hat nodedemo",
-  "select_file_sar": "Select or drop the sar file here"
+    "start": "Start",
+    "previous": "Previous",
+    "next": "Next",
+    "start_over": "Start Over",
+    "version": "Current Version"
 }
