@@ -10,8 +10,6 @@ angular.module('nodedemoApp')
         };
 
         $scope.isShown = function (step) {
-            console.log("Navigation.navigation.maxStep", Navigation.navigation.maxStep);
-            console.log("step", step);
             return step <= Navigation.navigation.maxStep;
         };
 
