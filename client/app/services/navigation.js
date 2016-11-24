@@ -3,8 +3,8 @@
 angular.module('nodedemoApp').factory('Navigation', function ($state, $rootScope) {
     var menuItems = [
         {
-            title: "Question",
-            link: ".question",
+            title: "Version",
+            link: ".version",
             step: 0
         },
         {

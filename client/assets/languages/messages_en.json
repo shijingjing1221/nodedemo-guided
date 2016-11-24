@@ -3,5 +3,6 @@
     "previous": "Previous",
     "next": "Next",
     "start_over": "Start Over",
-    "version": "Current Version"
+    "version_title": "RHEL Version",
+    "version_select": "Select the version that you use:"
 }

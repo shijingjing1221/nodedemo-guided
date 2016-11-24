@@ -1,0 +1,11 @@
+.app-block.app-block-guided
+    h2.title(translate="version_title")
+    .content.form-horizontal
+        .form-group
+            .col-sm-8.col-sm-offset-2
+                form(role='form')
+                    .form-group
+                        select.form-control#RHELVersion(ng-model="data.currentVersion" ng-options="v.name for v in data.avaliableVersions") {{v}}
+        .row
+            .col-xs-12
+                button.btn.btn-next.submit(ng-click="navigation.goNext()" translate="next")
