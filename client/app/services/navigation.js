@@ -8,8 +8,8 @@ angular.module('nodedemoApp').factory('Navigation', function ($state, $rootScope
             step: 0
         },
         {
-            title: "Suggestion",
-            link: ".suggestion",
+            title: "Step1",
+            link: ".step1",
             step: 1
         }
     ];
