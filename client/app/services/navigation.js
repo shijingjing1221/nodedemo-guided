@@ -8,7 +8,7 @@ angular.module('nodedemoApp').factory('Navigation', function ($state, $rootScope
             step: 0
         },
         {
-            title: "Step1",
+            title: "Memory setting",
             link: ".step1",
             step: 1
         }

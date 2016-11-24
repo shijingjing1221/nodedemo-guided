@@ -12,5 +12,6 @@ angular.module('nodedemoApp').factory('Data', function ($cookies) {
         number: 5,
         name: "Red Hat Enterprise Linux 5.4 or later"
     }];
+    publicVars.currentVersion = publicVars.avaliableVersions[1];
     return publicVars;
 });
